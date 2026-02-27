@@ -18,48 +18,6 @@
 @use "themes";
 @use "layout";
 
-
-/* 전체 배경색을 어두운 회색으로 설정 */
-body {
-  background-color: #2c2c2c !important; /* 원하는 배경색으로 조절 가능 */
-}
-
-// /* 본문 영역만 흰색 박스로 만들기 */
-// .container {
-//   background-color: #ffffff;
-//   margin-top: 50px;
-//   margin-bottom: 50px;
-//   padding: 40px;
-//   border-radius: 15px; /* 모서리를 둥글게 */
-//   box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* 그림자 효과로 입체감 부여 */
-// }
-
-/* 본문 영역을 흰색 박스로 만들기 - 더 확실한 선택자 */
-.post, .container {
-  background-color: #ffffff;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  max-width: 930px; /* _config.yml의 max_width와 맞춤 */
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-/* 상단 메뉴바 색상 조정 (선택 사항) */
-header {
-  border-bottom: none !important;
-}
-
-/* 상단 메뉴 글자를 흰색으로 (배경이 어두우니까) */
-.navbar {
-  background-color: rgba(44, 44, 44, 0.95) !important; /* 바깥 배경과 맞춤 */
-}
-.navbar a {
-  color: #ffffff !important;
-}
 // Core styles organized by usage
 @use "typography";
 @use "navbar";
@@ -79,3 +37,32 @@ header {
 @use "font-awesome/brands";
 @use "font-awesome/solid";
 @use "font-awesome/regular";
+
+
+/* 3. 박혜림님을 위한 커스텀 스타일 (맨 아래에 배치) */
+
+/* 전체 배경색 */
+body {
+  background-color: #2c2c2c !important; 
+}
+
+/* 본문 흰색 박스 디자인 */
+.post, .container {
+  background-color: #ffffff !important;
+  margin-top: 60px !important;
+  margin-bottom: 60px !important;
+  padding: 45px !important;
+  border-radius: 20px !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6) !important;
+  max-width: 900px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* 상단 메뉴바 글자색 (배경이 어두우므로 흰색으로 변경) */
+.navbar {
+  background-color: rgba(44, 44, 44, 0.95) !important;
+}
+.navbar .nav-link, .navbar .navbar-brand {
+  color: #ffffff !important;
+}
