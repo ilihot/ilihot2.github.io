@@ -10,183 +10,69 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #faf9f7;
-      --text: #111110;
-      --muted: #6b6860;
-      --border: #dddbd6;
-      --subtle: #f0ede8;
-      --tag-bg: #eeece8;
+      --bg: #faf9f7; --text: #111110; --muted: #6b6860;
+      --border: #dddbd6; --subtle: #f0ede8; --tag-bg: #eeece8;
+      --accent: #111110;
       --font-body: 'EB Garamond', Georgia, serif;
       --font-mono: 'JetBrains Mono', monospace;
     }
     html { font-size: 17px; scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      line-height: 1.75;
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 3.5rem 2rem 6rem;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* HEADER */
-    .header {
-      display: grid;
-      grid-template-columns: 148px 1fr;
-      gap: 2.5rem;
-      align-items: start;
-      margin-bottom: 3rem;
-      padding-bottom: 2.5rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .photo-wrap img {
-      width: 130px; height: 160px;
-      border-radius: 3px;
-      object-fit: cover; object-position: top;
-      border: 1px solid var(--border);
-      display: block;
-    }
-    .bio h1 {
-      font-size: 2rem; font-weight: 600;
-      letter-spacing: -0.015em;
-      margin-bottom: 0.2rem; line-height: 1.2;
-    }
-    .bio .subtitle {
-      font-size: 0.95rem; color: var(--muted);
-      font-style: italic; line-height: 1.55;
-      margin-bottom: 1.1rem;
-    }
-    .info-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 0.5rem 2rem; font-size: 0.88rem;
-    }
-    .info-row .lbl {
-      font-family: var(--font-mono); font-size: 0.68rem;
-      color: var(--muted); text-transform: uppercase;
-      letter-spacing: 0.08em; display: block; margin-bottom: 0.05rem;
-    }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); line-height: 1.75; max-width: 860px; margin: 0 auto; padding: 3.5rem 2rem 6rem; -webkit-font-smoothing: antialiased; }
+    .header { display: grid; grid-template-columns: 148px 1fr; gap: 2.5rem; align-items: start; margin-bottom: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--border); }
+    .photo-wrap img { width: 130px; height: 160px; border-radius: 3px; object-fit: cover; object-position: top; border: 1px solid var(--border); display: block; }
+    .bio h1 { font-size: 2rem; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 0.2rem; line-height: 1.2; }
+    .bio .subtitle { font-size: 0.95rem; color: var(--muted); font-style: italic; line-height: 1.55; margin-bottom: 1.1rem; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 2rem; font-size: 0.88rem; }
+    .info-row .lbl { font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-bottom: 0.05rem; }
     .info-row a { text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--border); }
     .info-row a:hover { text-decoration-color: var(--text); }
     .social-links { display: flex; gap: 1.2rem; margin-top: 1.2rem; flex-wrap: wrap; }
-    .social-links a {
-      font-family: var(--font-mono); font-size: 0.72rem;
-      color: var(--muted); text-decoration: none;
-      border-bottom: 1px solid var(--border); padding-bottom: 1px;
-      transition: color 0.15s, border-color 0.15s;
-    }
+    .social-links a { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1px; transition: color 0.15s, border-color 0.15s; }
     .social-links a:hover { color: var(--text); border-color: var(--text); }
-
-    /* SECTIONS */
     section { margin-bottom: 2.8rem; }
-    section h2 {
-      font-size: 0.7rem; font-family: var(--font-mono);
-      text-transform: uppercase; letter-spacing: 0.14em;
-      color: var(--muted); margin-bottom: 1.1rem;
-      padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
-    }
+    section h2 { font-size: 0.7rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); margin-bottom: 1.1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
     a { color: inherit; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--border); }
     a:hover { text-decoration-color: var(--text); }
-
-    /* RESEARCH INTERESTS */
     .interest-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
     .interest-list li { padding-left: 1.2rem; position: relative; font-size: 0.95rem; }
     .interest-list li::before { content: "·"; position: absolute; left: 0; color: var(--muted); font-size: 1.5rem; line-height: 1.2; }
     .interest-list strong { font-weight: 600; }
     .interest-list .desc { color: var(--muted); font-size: 0.9rem; display: block; }
-
-    /* PUBLICATIONS */
     .pub-list { list-style: none; }
     .pub-item { padding: 0.9rem 0; border-bottom: 1px solid var(--subtle); font-size: 0.92rem; line-height: 1.65; }
     .pub-item:last-child { border-bottom: none; }
-
     .pub-title-row { display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: 0.1rem; }
-    .pub-title {
-      font-weight: 600; flex: 1;
-    }
+    .pub-title { font-weight: 600; flex: 1; }
     .pub-title a { text-decoration: none; }
     .pub-title a:hover { text-decoration: underline; text-underline-offset: 2px; }
-
-    /* icon links */
     .pub-icons { display: flex; gap: 0.35rem; align-items: center; flex-shrink: 0; padding-top: 0.15rem; }
-    .pub-icon {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 22px; height: 22px; border-radius: 3px;
-      background: var(--tag-bg); color: var(--muted);
-      text-decoration: none; transition: background 0.15s, color 0.15s;
-      border: 1px solid var(--border);
-    }
+    .pub-icon { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 3px; background: var(--tag-bg); color: var(--muted); text-decoration: none; transition: background 0.15s, color 0.15s; border: 1px solid var(--border); }
     .pub-icon:hover { background: var(--text); color: #fff; border-color: var(--text); }
     .pub-icon svg { width: 12px; height: 12px; fill: currentColor; }
-
     .pub-authors { color: var(--muted); font-size: 0.84rem; display: block; margin-bottom: 0.25rem; }
     .pub-authors strong { color: var(--text); font-weight: 700; }
     .pub-meta { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
-    .tag {
-      display: inline-block; background: var(--tag-bg); color: var(--text);
-      font-family: var(--font-mono); font-size: 0.65rem;
-      padding: 0.12rem 0.45rem; border-radius: 2px; font-weight: 500; letter-spacing: 0.04em;
-    }
-    .badge {
-      display: inline-block; background: #111; color: #fff;
-      font-family: var(--font-mono); font-size: 0.6rem;
-      padding: 0.12rem 0.45rem; border-radius: 2px; letter-spacing: 0.05em;
-    }
-    .badge-honor {
-      display: inline-block; background: #8b6914; color: #fff;
-      font-family: var(--font-mono); font-size: 0.6rem;
-      padding: 0.12rem 0.45rem; border-radius: 2px; letter-spacing: 0.05em;
-    }
-
-    /* TALKS */
+    .tag { display: inline-block; background: var(--tag-bg); color: var(--text); font-family: var(--font-mono); font-size: 0.65rem; padding: 0.12rem 0.45rem; border-radius: 2px; font-weight: 500; letter-spacing: 0.04em; }
+    .badge { display: inline-block; background: #111; color: #fff; font-family: var(--font-mono); font-size: 0.6rem; padding: 0.12rem 0.45rem; border-radius: 2px; letter-spacing: 0.05em; }
+    .badge-honor { display: inline-block; background: #8b6914; color: #fff; font-family: var(--font-mono); font-size: 0.6rem; padding: 0.12rem 0.45rem; border-radius: 2px; letter-spacing: 0.05em; }
     .talk-list { list-style: none; }
-    .talk-item {
-      display: grid; grid-template-columns: 90px 1fr;
-      gap: 1rem; padding: 0.55rem 0;
-      border-bottom: 1px solid var(--subtle);
-      font-size: 0.91rem; line-height: 1.55; align-items: baseline;
-    }
+    .talk-item { display: grid; grid-template-columns: 90px 1fr; gap: 1rem; padding: 0.55rem 0; border-bottom: 1px solid var(--subtle); font-size: 0.91rem; line-height: 1.55; align-items: baseline; }
     .talk-item:last-child { border-bottom: none; }
     .talk-date { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); white-space: nowrap; }
-
-    /* AWARDS */
     .award-list { list-style: none; }
-    .award-item {
-      display: grid; grid-template-columns: 80px 1fr;
-      gap: 1rem; padding: 0.55rem 0;
-      border-bottom: 1px solid var(--subtle);
-      font-size: 0.91rem; line-height: 1.5; align-items: baseline;
-    }
+    .award-item { display: grid; grid-template-columns: 80px 1fr; gap: 1rem; padding: 0.55rem 0; border-bottom: 1px solid var(--subtle); font-size: 0.91rem; line-height: 1.5; align-items: baseline; }
     .award-item:last-child { border-bottom: none; }
     .award-year { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); }
-
-    /* EDUCATION */
     .edu-list { list-style: none; }
-    .edu-item {
-      display: grid; grid-template-columns: 190px 1fr;
-      gap: 1rem; padding: 0.75rem 0;
-      border-bottom: 1px solid var(--subtle);
-      font-size: 0.91rem; line-height: 1.6;
-    }
+    .edu-item { display: grid; grid-template-columns: 190px 1fr; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid var(--subtle); font-size: 0.91rem; line-height: 1.6; }
     .edu-item:last-child { border-bottom: none; }
     .edu-period { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); padding-top: 0.1rem; }
     .edu-deg { font-weight: 600; display: block; }
     .edu-sub { color: var(--muted); font-size: 0.86rem; }
-
-    /* PATENTS */
     .pat-list { list-style: none; }
     .pat-item { padding: 0.65rem 0; border-bottom: 1px solid var(--subtle); font-size: 0.91rem; line-height: 1.6; }
     .pat-item:last-child { border-bottom: none; }
-
-    /* FOOTER */
-    footer {
-      margin-top: 5rem; padding-top: 1.25rem;
-      border-top: 1px solid var(--border);
-      font-family: var(--font-mono); font-size: 0.68rem;
-      color: var(--muted); display: flex; justify-content: space-between;
-    }
-
+    footer { margin-top: 5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted); display: flex; justify-content: space-between; }
     @media (max-width: 620px) {
       body { padding: 2rem 1.2rem 4rem; }
       .header { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -221,14 +107,11 @@
           <span class="lbl">Address</span>
           <span>291 Daehak-ro, Yuseong-gu, Daejeon</span>
         </div>
-        <div class="info-row">
-          <span class="lbl">ORCID</span>
-          <a href="https://orcid.org/0000-0001-6764-4490" target="_blank">0000-0001-6764-4490</a>
-        </div>
+
       </div>
       <div class="social-links">
         <a href="https://scholar.google.com/citations?user=xa5y9S4AAAAJ&hl=en" target="_blank">Google Scholar</a>
-        <a href="https://github.com/ilihot" target="_blank">GitHub</a>
+
         <a href="#">CV (PDF)</a>
         <a href="https://www.linkedin.com/in/hyerim-park-793420a9/" target="_blank">LinkedIn</a>
       </div>
@@ -259,7 +142,6 @@
     <h2>Selected Publications</h2>
     <ul class="pub-list">
 
-      <!-- CHI 2026 — new accept -->
       <li class="pub-item">
         <div class="pub-title-row">
           <span class="pub-title">
@@ -279,7 +161,6 @@
         </div>
       </li>
 
-      <!-- IEEE Consumer Electronics Magazine 2024 -->
       <li class="pub-item">
         <div class="pub-title-row">
           <span class="pub-title">
@@ -291,14 +172,13 @@
             </a>
           </div>
         </div>
-        <span class="pub-authors"><strong>Hyerim Park</strong>, Jinseok Hong, Heejeong Ko, Woontack Woo</span>
+        <span class="pub-authors"><strong>Hyerim Park</strong>, Aram Min, Hyunjin Lee, Woontack Woo</span>
         <div class="pub-meta">
           <span class="tag">SCIE</span>
           <span class="tag">IEEE Consumer Electronics Magazine · 2024</span>
         </div>
       </li>
 
-      <!-- CHI 2024 — Comfortable Mobility -->
       <li class="pub-item">
         <div class="pub-title-row">
           <span class="pub-title">
@@ -318,7 +198,6 @@
         </div>
       </li>
 
-      <!-- CHI 2024 — Augmented Narrative Spaces -->
       <li class="pub-item">
         <div class="pub-title-row">
           <span class="pub-title">
@@ -336,7 +215,6 @@
         </div>
       </li>
 
-      <!-- IEEE VR 2024 -->
       <li class="pub-item">
         <div class="pub-title-row">
           <span class="pub-title">
@@ -348,13 +226,12 @@
             </a>
           </div>
         </div>
-        <span class="pub-authors"> Jinseok Hong, Taewook Ha, <strong>Hyerim Park</strong>, Hayun Kim, Woontack Woo</span>
+        <span class="pub-authors">Jinseok Hong, Taewook Ha, <strong>Hyerim Park</strong>, Hayun Kim, Woontack Woo</span>
         <div class="pub-meta">
           <span class="tag">IEEE VR 2024</span>
         </div>
       </li>
 
-      <!-- Virtual Reality Journal 2023 -->
       <li class="pub-item">
         <div class="pub-title-row">
           <span class="pub-title">
@@ -366,14 +243,13 @@
             </a>
           </div>
         </div>
-        <span class="pub-authors">Maryam Shakeri, <strong>Hyerim Park</strong>, Ikbeom Jeon,  Abolghasem Sadeghi-Niaraki & Woontack Woo </span>
+        <span class="pub-authors">Maryam Shakeri, <strong>Hyerim Park</strong>, Ikbeom Jeon, Abolghasem Sadeghi-Niaraki, Woontack Woo</span>
         <div class="pub-meta">
           <span class="tag">SCIE</span>
           <span class="tag">Virtual Reality Journal · 2023</span>
         </div>
       </li>
 
-      <!-- Virtual Reality Journal 2022 -->
       <li class="pub-item">
         <div class="pub-title-row">
           <span class="pub-title">
@@ -393,7 +269,6 @@
         </div>
       </li>
 
-      <!-- IEEE VR 2021 -->
       <li class="pub-item">
         <div class="pub-title-row">
           <span class="pub-title">
@@ -411,7 +286,6 @@
         </div>
       </li>
 
-      <!-- HIMI 2018 -->
       <li class="pub-item">
         <div class="pub-title-row">
           <span class="pub-title">
@@ -430,6 +304,9 @@
       </li>
 
     </ul>
+    <p style="margin-top: 1.2rem; font-size: 0.92rem;">
+      <a href="https://scholar.google.co.kr/citations?hl=en&user=xa5y9S4AAAAJ&view_op=list_works&sortby=pubdate" target="_blank" style="color: var(--text); text-decoration: none; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 1px;">See all publications →</a>
+    </p>
   </section>
 
   <!-- INVITED TALKS -->
@@ -545,15 +422,17 @@
       <li class="pat-item">
         <strong>"Method and system for processing augmented reality of video content"</strong><br />
         <span style="color:var(--muted); font-size:0.86rem;">
-          H.R. Park, M. Shakeri, I.B. Jeon, J.Y. Kim, A. Sadeghi-Niaraki, W.T. Woo<br />
           KR Patent (Application) &nbsp;·&nbsp; 10-2023-0001398 &nbsp;·&nbsp; 2023
         </span>
       </li>
-      <li class="pat-item">
-        <strong>"Video extraction apparatus using advanced face clustering technique"</strong><br />
-        <span style="color:var(--muted); font-size:0.86rem;">
-          H.R. Park, W.J. Cho<br />
-          KR Patent (Granted) &nbsp;·&nbsp; 1021120330000 &nbsp;·&nbsp; 2020
-        </span>
-      </li>
-    
+
+    </ul>
+  </section>
+
+  <footer>
+    <span>Hyerim Park</span>
+    <span>Last updated March 2026</span>
+  </footer>
+
+</body>
+</html>
